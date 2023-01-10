@@ -9,7 +9,7 @@ imagesContainerEl.classList.add('gallery__item')
 
 function createImagesMarkup (images) {
     return images.map(({ description, original, preview }) => {
-        return `<a class="gallery__link" href="large-image.jpg">
+        return `<a class="gallery__link" href=${original}>
         <img
           class="gallery__image"
           src=${preview}
@@ -23,5 +23,13 @@ function createImagesMarkup (images) {
 const imagesMarkup = createImagesMarkup(galleryItems)
 
 imagesContainerEl.insertAdjacentHTML('beforeend', imagesMarkup)
+
+// const linkEl = document.querySelectorAll('.gallery__link')
+// linkEl.setAttribute("rel", "noopener noreferrer nofollow")
+
+// console.log(linkEl.hasAttribute('rel'))
+
+// why TypeError: linkEl.hasAttribute is not a function??????
+
 
 
