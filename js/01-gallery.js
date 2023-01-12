@@ -21,21 +21,21 @@ const imagesMarkup = createImagesMarkup(galleryItems)
 imagesContainerEl.insertAdjacentHTML('beforeend', imagesMarkup)
 
 const linkEl = document.querySelectorAll('.gallery__link')
-console.log(linkEl)
 const listLinkEl = [...linkEl]
 listLinkEl.map(e => e.setAttribute("rel", "noopener noreferrer nofollow"))
 
 function onImagesContainerClick (event) {
     event.preventDefault()
 
-    const imageEl = event.target
     const isGalleryImageEl = event.target.classList.contains('gallery__image')
 
     if (!isGalleryImageEl) {
         return
     } else {
         const originalImg = event.target.dataset.source
-        basicLightbox.create(`<img src="${imageEl.src}" alt="${imageEl.description}"></img>`).show()
+        const originalAlt = event.target.dataset.alt 
+        basicLightbox.create(`<img src="${originalImg}" alt="${originalImg.description}"></img>`).show()
+        console.log(originalImg.description)
     }
 }
 imagesContainerEl.addEventListener('click', onImagesContainerClick)
